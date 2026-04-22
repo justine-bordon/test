@@ -153,6 +153,11 @@ class SimpleMole(Mole):
 
     def affect_moles(self, moles: Sequence[Mole]) -> None:
         pass
+        
+class BombMole(SimpleMole):
+    @property
+    def points(self) -> int:
+        return -5
 
 
 class MolePopupPlan(Protocol):
