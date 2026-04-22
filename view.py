@@ -4,7 +4,7 @@ from typing import Protocol
 import pyxel
 
 from model import MoleInfo, MoleState
-from moles import _
+from moles import *
 
 
 class UpdateHandler(Protocol):
