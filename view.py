@@ -3,7 +3,7 @@ from typing import Protocol
 
 import pyxel
 
-from model import MoleInfo
+from model import MoleInfo, MoleState
 
 
 class UpdateHandler(Protocol):
