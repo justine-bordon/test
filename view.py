@@ -57,10 +57,10 @@ class View:
 			
 			pyxel.circ(x,y,15,5)
 			
-			if (mole.state == MoleState.ACTIVE) and (isinstance(mole, SimpleMole)) and not (isinstance(mole, BombMole)):
-				pyxel.circ(x,y,10,9)
-			elif (mole.state == MoleState.ACTIVE) and isinstance(mole, BombMole):
+			if (mole.state == MoleState.ACTIVE) and (isinstance(mole, BombMole)):
 				pyxel.circ(x,y,10,0)
+			elif (mole.state == MoleState.ACTIVE) and isinstance(mole, SimpleMole):
+				pyxel.circ(x,y,10,9)
 			elif mole.state == MoleState.HIT:
 				pyxel.circ(x,y,10,8)
 			else:
