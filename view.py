@@ -41,7 +41,7 @@ class View:
 			
 			if locs:
 				for i in range(total):
-					cx, cy = layout[i]
+					cx, cy = locs[i]
 					if (pyxel.mouse_x - cx)**2 + (pyxel.mouse_y - cy)**2 <= 100:
 						return i
 		return None
@@ -52,7 +52,7 @@ class View:
 		locs = self._LOCS.get(total)
 		
 		for i, mole in enumerate(moles_info):
-			x, y = layout[i]
+			x, y = locs[i]
 			
 			pyxel.circ(x,y,15,5)
 			
