@@ -86,5 +86,5 @@ class Model:
         rng = Random()
         simple_popup = SimpleMolePopupPlan()
         simple_game_over = SimpleGameOverCondition()
-        moles = [SimpleMole() for _ in range(7), BombMole()]
+        moles = [SimpleMole() for _ in range(7)] + [BombMole()]
         return cls(moles, simple_popup, simple_game_over, rng)
