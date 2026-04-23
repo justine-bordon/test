@@ -170,6 +170,8 @@ class LuckyMole(SimpleMole):
     def receive_hit(self, damage: int) -> None:
         if self._rng.random() < 0.5:
             super().receive_hit(damage)
+        else:
+            print("Dodged!")
             
 
 class RichMole(SimpleMole):
@@ -188,10 +190,26 @@ class RichMole(SimpleMole):
             super().hide()
 
 class ScaredyMole(SimpleMole):
+    def __init__(self):
+    	super().__init__()
+    	self._scare = False
+    	
+    @property
+    def base_active_ticks(self) -> int:
+    	return 80
+    	
+    def receive_hit(self, damage: int) -> None:
+    	super().receive_hit(damage)
+    	if self.hit_points <= 0:
+    		self._scare = True
+    	
     def affect_moles(self, moles: Sequence[Mole]) -> None:
-        total = len(moles)
-        if self.state != MoleState.HIT:
+        if not self._scare:
         	return
+        
+        self._scare = False
+        
+        total = len(moles)
         
         try:
         	i = list(moles).index(self)
