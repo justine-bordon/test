@@ -172,7 +172,7 @@ class LuckyMole(SimpleMole):
             super().receive_hit(damage)
             
 
-class RichMole(Mole):
+class RichMole(SimpleMole):
     def __init__(self):
         super().__init__()
     @property
