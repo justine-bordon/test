@@ -127,6 +127,7 @@ class SimpleMole(Mole):
         if self._state == MoleState.INACTIVE and self._cooldown_ticks <= 0:
             self._state = MoleState.ACTIVE
             self._active_ticks = self.base_active_ticks
+            self._hit_points = self.base_hit_points
     
     def hide(self) -> None:
         self._state = MoleState.INACTIVE
