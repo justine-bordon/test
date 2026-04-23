@@ -189,7 +189,27 @@ class RichMole(SimpleMole):
 
 class ScaredyMole(SimpleMole):
     def affect_moles(self, moles: Sequence[Mole]) -> None:
-        pass
+        total = len(moles)
+        if self.state != MoleState.HIT:
+        	return
+        
+        try:
+        	i = list(moles).index(self)
+        except ValueError:
+        	return
+        
+        if i == 0:
+        	for a in range(1,total):
+        		moles[a].hide()
+        elif i == 1:
+        	for a in [0, 2, total-1]:
+        		moles[a].hide()
+        elif i == (total-1):
+        	for a in [0, 1, total-2]:
+        		moles[a].hide()
+        else:
+        	for a in [0, i-1, i+1]:
+        		moles[a].hide()
 
 
 class MolePopupPlan(Protocol):
