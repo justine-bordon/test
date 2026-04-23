@@ -55,26 +55,26 @@ class View:
 		for i, mole in enumerate(moles_info):
 			x, y = locs[i]
 			
-			pyxel.circ(x,y,15,5)
+			pyxel.circ(x,y,15,0)
 			
 			if (mole.state == MoleState.ACTIVE) and (isinstance(mole, BombMole)):
-				pyxel.circ(x,y,10,0)
+				pyxel.circ(x,y,10,4)
 			elif (mole.state == MoleState.ACTIVE) and isinstance(mole, LuckyMole):
 				pyxel.circ(x,y,10,11)
 			elif (mole.state == MoleState.ACTIVE) and isinstance(mole, RichMole):
 				pyxel.circ(x,y,10,10)
 			elif (mole.state == MoleState.ACTIVE) and isinstance(mole, ScaredyMole):
-				pyxel.circ(x,y,10,6)
+				pyxel.circ(x,y,10,2)
 			elif (mole.state == MoleState.ACTIVE) and isinstance(mole, SimpleMole):
 				pyxel.circ(x,y,10,9)
 			elif mole.state == MoleState.HIT:
 				pyxel.circ(x,y,10,8)
 			else:
-				pyxel.circ (x,y,10,5)
+				pyxel.circ (x,y,10,0)
 		
 		
 		
 	def draw_score(self, score: int) -> None:
 		pyxel.text(5,5, f"SCORE: {score}", 7)
 	def reset_screen(self) -> None:
-		pyxel.cls(0)
+		pyxel.cls(15)
