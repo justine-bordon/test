@@ -158,6 +158,24 @@ class BombMole(SimpleMole):
     @property
     def points(self) -> int:
         return -5
+        
+class LuckyMole(SimpleMole):
+    @property
+    def points(self) -> int:
+        return 2
+
+class RichMole(Mole):
+    @property
+    def base_hit_points(self) -> int:
+        return 2
+    @property
+    def points(self) -> int:
+        ...
+
+class ScaredyMole(SimpleMole):
+    ...
+    def affect_moles(self, moles: Sequence[Mole]) -> None:
+        ...
 
 
 class MolePopupPlan(Protocol):
