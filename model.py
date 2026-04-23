@@ -1,7 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from collections.abc import Sequence
-from random import Random
+from random import Random, shuffle
 from typing import Protocol
 
 from moles import (
@@ -86,5 +86,8 @@ class Model:
         rng = Random()
         simple_popup = SimpleMolePopupPlan()
         simple_game_over = SimpleGameOverCondition()
-        moles = [ScaredyMole() for _ in range(8)]
+        moles = [ScaredyMole(),SimpleMole(),SimpleMole(),BombMole(),BombMole(),LuckyMole(), LuckyMole(), RichMole()]
+
+        shuffle(moles)
+
         return cls(moles, simple_popup, simple_game_over, rng)
