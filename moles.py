@@ -128,7 +128,7 @@ class SimpleMole(Mole):
             self._state = MoleState.ACTIVE
             self._active_ticks = self.base_active_ticks
     
-    def hide(self) -> None:
+	def hide(self) -> None:
         self._state = MoleState.INACTIVE
         self._cooldown_ticks = self.base_cooldown_ticks
 
@@ -178,7 +178,8 @@ class RichMole(Mole):
     @property
     def base_hit_points(self) -> int:
         return 2
-    def hide(self) -> None:
+		
+	def hide(self) -> None:
         if self._state == MoleState.ACTIVE:
 			self._points += 1
 			super().hide()
