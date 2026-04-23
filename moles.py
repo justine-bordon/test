@@ -180,11 +180,7 @@ class RichMole(Mole):
         return 2
         
     def hide(self) -> None:
-        if self._state == MoleState.ACTIVE:
-			self._points += 1
-			super().hide()
-		if self._state == MoleState.HIT:
-			super().hide()
+		...
 
 class ScaredyMole(SimpleMole):
     ...
