@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from collections.abc import Sequence
 from enum import Enum, auto
 from typing import Protocol
+from random import Random
 
 
 class MoleState(Enum):
@@ -82,6 +83,8 @@ class SimpleMole(Mole):
         self._active_ticks = self.base_active_ticks
         self._cooldown_ticks = 0
         self._state = MoleState.INACTIVE
+        self._rng = Random()
+        self._points = 1
         super().__init__()
 
     @property
@@ -114,7 +117,7 @@ class SimpleMole(Mole):
 
     @property
     def points(self) -> int:
-        return 1
+        return self._points
 
     @property
     def state(self) -> MoleState:
@@ -155,22 +158,33 @@ class SimpleMole(Mole):
         pass
         
 class BombMole(SimpleMole):
-    @property
-    def points(self) -> int:
-        return -5
+    def __init__(self):
+        super().__init__()
+        self._points = -5
         
 class LuckyMole(SimpleMole):
-    @property
-    def points(self) -> int:
-        return 2
+    def __init__(self):
+        super().__init__()
+        self._points = 2
+        
+    def receive_hit(self, damage: int) -> None:
+        if self._rng.random() < 0.5:
+            super().receive_hit(damage)
+            
 
 class RichMole(Mole):
+    def __init__(self):
+        super().__init__()
     @property
     def base_hit_points(self) -> int:
         return 2
-    @property
-    def points(self) -> int:
-        ...
+        
+    def hide(self) -> None:
+        if self._state == MoleState.ACTIVE:
+			self._points += 1
+			super().hide()
+		if self._state == MoleState.HIT:
+			super().hide()
 
 class ScaredyMole(SimpleMole):
     ...
