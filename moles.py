@@ -178,9 +178,6 @@ class RichMole(Mole):
     @property
     def base_hit_points(self) -> int:
         return 2
-        
-    def hide(self) -> None:
-		...
 
 class ScaredyMole(SimpleMole):
     ...
