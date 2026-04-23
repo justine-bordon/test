@@ -75,6 +75,6 @@ class View:
 		
 		
 	def draw_score(self, score: int) -> None:
-		pyxel.text(5,5, f"SCORE: {score}", 7)
+		pyxel.text(5,5, f"SCORE: {score}", 0)
 	def reset_screen(self) -> None:
 		pyxel.cls(15)
